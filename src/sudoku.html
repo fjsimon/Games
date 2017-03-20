@@ -1,0 +1,32 @@
+<template>
+
+  <h1>${heading}</h1>
+
+  <div class="sudoku">
+    <div class="sudoku-row" repeat.for="row of boardCell" >
+      <div class="cell" repeat.for="element of row" >
+        <a class="cell-value" text.bind="element.value != 0 ? element.value : ' '"></a>
+      </div>
+    </div>
+  </div>
+
+  <button id='solve' click.delegate='solveSudoku()'> Solve </button>
+
+  <!--<input type="file" id="fileinput" accept=".txt" click.delegate="readFile()"/>-->
+  <!--<input type="file" id="fileinput" accept=".txt" />-->
+
+  <section style="display:none">
+    <div class="select-row">
+      <div class="cell"><a class="cell-value">1</a></div>
+      <div class="cell"><a class="cell-value">2</a></div>
+      <div class="cell"><a class="cell-value">3</a></div>
+      <div class="cell"><a class="cell-value">4</a></div>
+      <div class="cell"><a class="cell-value">5</a></div>
+      <div class="cell"><a class="cell-value">6</a></div>
+      <div class="cell"><a class="cell-value">7</a></div>
+      <div class="cell"><a class="cell-value">8</a></div>
+      <div class="cell"><a class="cell-value">9</a></div>
+    </div>
+  </section>
+
+</template>
