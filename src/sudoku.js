@@ -1,10 +1,12 @@
-import {BindingEngine, inject} from 'aurelia-framework';
+import {BindingEngine, inject, observable} from 'aurelia-framework';
 import {Cell} from './cell';
 
 @inject(BindingEngine)
 export class Sudoku {
 
   heading = 'Sudoku Solver';
+
+  @observable solved = false;
 
   board = [
        [1,2,0,4,5,0,0,8,0],
@@ -37,14 +39,37 @@ export class Sudoku {
     }
   }
 
-  solveSudoku(){
+  solveSudoku() {
 
     this.solve(0, 0, this.boardCell);
+    this.solved = true;
   }
 
-  readFile() {
+	resetSudoku() {
 
-  }
+		/* We define difficulty as follows:
+			Easy: 32+ clues (49 or fewer holes)
+			Medium: 27-31 clues (50-54 holes)
+			Hard: 26 or fewer clues (54+ holes)
+			This is human difficulty, not algorithmically (though there is some correlation)
+		*/
+		let remainingSquares = 81;
+		let remainingHoles = 49;
+
+		for(let i=0; i<9; i++) {
+			for(let j=0; j<9; j++) {
+			  let holeChance = remainingHoles/remainingSquares;
+				if(Math.random() <= holeChance) {
+					this.boardCell[i][j].value = 0;
+					remainingHoles -= 1;
+				}
+				remainingSquares -= 1;
+			}
+		}
+
+    this.solved = false;
+	}
+
 
   listChanged(splices) {
 
@@ -106,5 +131,12 @@ export class Sudoku {
       }
 
       return true; // no violations, so it's legal
+  }
+
+  FileLoadedCallback(file, data) {
+
+//    TODO: Include redux to dispatch an action with the array
+    let array = atob(data.split(',')[1]).split(',');
+    console.log(array);
   }
 }

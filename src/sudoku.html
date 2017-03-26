@@ -10,10 +10,10 @@
     </div>
   </div>
 
-  <button id='solve' click.delegate='solveSudoku()'> Solve </button>
+  <button class='solveButton' id='solve' click.delegate='solveSudoku()'> Solve </button>
+  <button class='resetButton' id='reset' click.delegate='resetSudoku()' disabled.bind='!solved'> Reset </button>
 
-  <!--<input type="file" id="fileinput" accept=".txt" click.delegate="readFile()"/>-->
-  <!--<input type="file" id="fileinput" accept=".txt" />-->
+  <input type="file" id="fileChooser" files="on-loaded.bind: FileLoadedCallback" />
 
   <section style="display:none">
     <div class="select-row">

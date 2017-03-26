@@ -9,6 +9,6 @@ export class Cell {
   }
 
   valueChanged(newValue, oldValue) {
-      console.log(newValue, oldValue);
+//      console.log(newValue, oldValue);
   }
 }

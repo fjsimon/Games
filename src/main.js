@@ -13,6 +13,8 @@ export async function configure(aurelia) {
     .standardConfiguration()
     .developmentLogging();
 
+  aurelia.use.plugin('aurelia-files');
+
   // Uncomment the line below to enable animation.
   // aurelia.use.plugin('aurelia-animator-css');
   // if the css animator is enabled, add swap-order="after" to all router-view elements
