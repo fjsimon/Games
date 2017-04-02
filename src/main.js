@@ -3,6 +3,7 @@ import '../styles/styles.css';
 import 'font-awesome/css/font-awesome.css';
 import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap';
+import {StoreWrapper} from 'store-wrapper'
 
 // comment out if you don't want a Promise polyfill (remove also from webpack.config.babel.js)
 import * as Bluebird from 'bluebird';
@@ -10,10 +11,10 @@ Bluebird.config({ warnings: false });
 
 export async function configure(aurelia) {
   aurelia.use
+    .singleton('StoreWrapper', StoreWrapper)
+    .plugin('aurelia-files')
     .standardConfiguration()
     .developmentLogging();
-
-  aurelia.use.plugin('aurelia-files');
 
   // Uncomment the line below to enable animation.
   // aurelia.use.plugin('aurelia-animator-css');

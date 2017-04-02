@@ -1,7 +1,8 @@
 import {BindingEngine, inject, observable} from 'aurelia-framework';
 import {Cell} from './cell';
+import {Select} from './actions/select';
 
-@inject(BindingEngine)
+@inject('StoreWrapper', BindingEngine, Select)
 export class Sudoku {
 
   heading = 'Sudoku Solver';
@@ -22,13 +23,33 @@ export class Sudoku {
 
   boardCell = [];
 
-  constructor(bindingEngine) {
+  constructor(storeWrapper, bindingEngine, select) {
 
+    this.store = storeWrapper.store;
+    this.select = select;
     this.bindingEngine = bindingEngine;
     let subscription = this.bindingEngine.collectionObserver(this.board).subscribe(this.listChanged);
   }
 
+  attached() {
+    this.unsubscribe = this.store.subscribe(() => {
+      this.update();
+    });
+  }
+
+  detached() {
+    this.unsubscribe();
+  }
+
+  update() {
+
+    let state = this.store.getState();
+    console.log(state);
+  }
+
   activate(){
+
+    this.store.dispatch(this.select.select("selected"));
 
     for(let i = 0; i < this.board.length; i++) {
         let row = [];
