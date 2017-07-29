@@ -12,7 +12,6 @@ Bluebird.config({ warnings: false });
 export async function configure(aurelia) {
   aurelia.use
     .singleton('StoreWrapper', StoreWrapper)
-    .plugin('aurelia-files')
     .standardConfiguration()
     .developmentLogging();
 

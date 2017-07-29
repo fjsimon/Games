@@ -154,10 +154,56 @@ export class Sudoku {
       return true; // no violations, so it's legal
   }
 
-  FileLoadedCallback(file, data) {
+  updateFilesSelect(event) {
 
-//    TODO: Include redux to dispatch an action with the array
-    let array = atob(data.split(',')[1]).split(',');
-    console.log(array);
+    console.log(event);
+    this.handleFileSelected(event, this);
   }
+
+  isSquare(n) {
+    return n > 0 && Math.sqrt(n) % 1 === 0;
+  }
+
+  updateBoard(list, self){
+    self.boardCell = [];
+    let row = [];
+    for (let i = 0; i <= list.length; i++) {
+        if (i !== 0 && i % 9 === 0) {
+          self.boardCell.push(row);
+          row = [];
+        }
+        row.push(new Cell(parseInt(list[i])));
+    }
+    console.log(self.boardCell);
+  }
+
+  handleFileSelected(evt, self) {
+
+    var files = evt.target.files;
+    for (var i = 0, f; f = files[i]; i++) {
+
+      if (!f.type.match('text.*')) {
+        continue;
+      }
+
+      var reader = new FileReader();
+            reader.onload = (function(file) {
+              return function(e) {
+
+                let list = e.target.result.split('');
+                console.log(list);
+                if(!self.isSquare(list.length)) {
+                  return;
+                }
+
+                self.updateBoard(list, self);
+
+              };
+            })(f);
+
+            // Read in the image file as a data URL.
+            reader.readAsText(f);
+
+      }
+    }
 }
