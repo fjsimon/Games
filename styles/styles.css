@@ -249,3 +249,28 @@ div.au-stagger {
 .sudoku .sudoku-row .cell a.cell-value.selected {
   background: #27ca9b;
 }
+
+/* EIGHT QUEENS */
+table {
+  font-size: 3em;
+  color: #333;
+  border:3px solid #666;
+  width: 584px;
+  height: 580px;
+  -webkit-box-shadow: 0px 0px 10px 2px rgba(50, 50, 50, 0.4);
+  -moz-box-shadow:    0px 0px 10px 2px rgba(50, 50, 50, 0.4);
+  box-shadow:         0px 0px 10px 2px rgba(50, 50, 50, 0.4);
+  margin: 0 auto;
+}
+
+td {
+  background:#FFFFFF;
+  height:70px;
+  width:70px;
+  text-align:center;
+}
+
+tr:nth-child(odd) td:nth-child(even),
+tr:nth-child(even) td:nth-child(odd) {
+  background:#AAAAAA;
+}
