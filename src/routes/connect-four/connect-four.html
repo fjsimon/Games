@@ -1,0 +1,29 @@
+<template>
+  <div class="connect-four">
+    <h1>${heading}</h1>
+    <div class="button" click.delegate='reset()'>New Game</div>
+    <table>
+      <thead>
+      </thead>
+      <tbody>
+        <tr repeat.for="row of board">
+          <td repeat.for="element of row">
+            <div class="cell" click.delegate='click(element)'>
+              <div class="${element.color}"></div>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="connect-four-select">
+      Depth (4 by default):
+      <select value.bind="selectedDepth" change.delegate='depthChanged()'>
+        <option value="4">Select...</option>
+        <option repeat.for="depth of depths" value.bind="depth">
+          ${depth}
+        </option>
+      </select>
+    </div>
+  </div>
+
+</template>

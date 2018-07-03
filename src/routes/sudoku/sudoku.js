@@ -1,6 +1,7 @@
 import {BindingEngine, inject, observable} from 'aurelia-framework';
 import {Cell} from './cell';
 import {Select} from '../../actions/select';
+import './sudoku.less';
 
 @inject('StoreWrapper', BindingEngine, Select)
 export class Sudoku {

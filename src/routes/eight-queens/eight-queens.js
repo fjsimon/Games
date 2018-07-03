@@ -1,5 +1,6 @@
 import {BindingEngine, inject, observable} from 'aurelia-framework';
 import {Cell} from './cell';
+import './eight-queens.less';
 
 @inject('StoreWrapper', BindingEngine)
 export class EightQueens {

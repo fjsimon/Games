@@ -1,7 +1,7 @@
 {
   "name": "Games",
   "version": "1.1.2",
-  "description": "A starter kit for building a standard navigation-style app with Aurelia and webpack.",
+  "description": "Games App with Aurelia and Webpack",
   "main": "dist/main.js",
   "scripts": {
     "pretest": "del-cli \"test/coverage\"",
@@ -80,6 +80,7 @@
     "@easy-webpack/config-common-chunks-simple": "^2.0.3",
     "@easy-webpack/config-copy-files": "^1.1.2",
     "@easy-webpack/config-css": "^4.0.0",
+    "@easy-webpack/config-less": "^3.0.0",
     "@easy-webpack/config-env-development": "^2.1.5",
     "@easy-webpack/config-env-production": "^3.0.0",
     "@easy-webpack/config-external-source-maps": "^3.1.0",
@@ -103,6 +104,7 @@
     "cross-env": "^3.1.3",
     "del-cli": "^0.2.0",
     "eslint": "^3.12.0",
+    "less": "^3.0.4",
     "gh-pages": "^1.0.0",
     "http-server": "^0.9.0",
     "jasmine-core": "^2.5.2",
