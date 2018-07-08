@@ -156,25 +156,27 @@ export class Controller {
 
     if (this.score(board) !== this.scores && this.score(board) !== -this.scores && !this.isFull(board)) {
       let ai_move = this.maximizePlay(board, depth);
-      return ai_move[0];
+      return ai_move;
     }
   }
 
   maximizePlay(board, depth) {
 
     let score = this.score(board);
-    if (this.isFinished(board, depth, score)) return [null, score];
-    let max = [null, -99999];
+    if (this.isFinished(board, depth, score))
+      return {column: null, score: score, scores: []};
 
+    let max = {column: null, score: -99999, scores: []};
     for (let column = 0; column < constant.COL; column++) {
         let new_board = this.copy(board);
         if (this.place(new_board, column, constant.YELLOW)) {
 
             let next_move = this.minimizePlay(new_board, depth - 1);
-            if (max[0] === null || next_move[1] >= max[1]) {
-                max[0] = column;
-                max[1] = next_move[1];
+            if (max.column === null || next_move.score >= max.score) {
+                max.column = column;
+                max.score = next_move.score;
             }
+            max.scores.splice(column, 0, next_move.score);
         }
     }
     return max;
@@ -183,17 +185,18 @@ export class Controller {
   minimizePlay(board, depth) {
 
     let score = this.score(board);
-    if (this.isFinished(board, depth, score)) return [null, score];
-    let min = [null, 99999];
+    if (this.isFinished(board, depth, score))
+      return {column: null, score: score};
 
+    let min = {column: null, score: 99999};
     for (var column = 0; column < constant.COL; column++) {
         let new_board = this.copy(board);
         if (this.place(new_board, column, constant.RED)) {
           this.iterations++;
           let next_move = this.maximizePlay(new_board, depth - 1);
-          if (min[0] === null || next_move[1] <= min[1]) {
-              min[0] = column;
-              min[1] = next_move[1];
+          if (min.column === null || next_move.score <= min.score) {
+              min.column = column;
+              min.score = next_move.score;
           }
         }
     }

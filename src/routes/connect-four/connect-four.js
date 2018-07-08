@@ -12,6 +12,7 @@ export class ConnectFour {
   board = [];
   depths = [3,4,5];
   selectedDepth = '';
+  scores = [0,0,0,0,0,0,0];
 
   constructor(storeWrapper, bindingEngine, selectPosition, controller) {
     this.store = storeWrapper.store;
@@ -34,8 +35,9 @@ export class ConnectFour {
     let state = this.store.getState();
     let elementCol = state.connectFour.selectPosition.col;
     this.controller.place(this.board, elementCol, constant.RED);
-    let generatedCol = this.controller.generateComputerDecision(this.board, this.selectedDepth);
-    this.controller.place(this.board, generatedCol, constant.YELLOW);
+    let decision = this.controller.generateComputerDecision(this.board, this.selectedDepth);
+    this.controller.place(this.board, decision.column, constant.YELLOW);
+    this.scores = decision.scores;
   }
 
   activate(){
