@@ -1,6 +1,6 @@
 export class App {
   configureRouter(config, router) {
-    config.title = 'Aurelia';
+    config.title = 'Games';
     config.map([
       { route: '',            name: 'sudoku',      moduleId: './routes/sudoku/sudoku',              nav: true, title: 'Sudoku' },
       { route: 'eightQueens', name: 'eightQueens', moduleId: './routes/eight-queens/eight-queens',  nav: true, title: 'Eight Queens' },
