@@ -25,18 +25,18 @@ describe('the App module', () => {
   });
 
   it('configures the router title', () => {
-    expect(sut.router.title).toEqual('Aurelia');
+    expect(sut.router.title).toEqual('Games');
   });
 
-  it('should have a welcome route', () => {
-    expect(sut.router.routes).toContain({ route: ['', 'welcome'], name: 'welcome',  moduleId: './welcome', nav: true, title: 'Welcome' });
+  it('should have a sudoku route', () => {
+    expect(sut.router.routes).toContain({ route: '', name: 'sudoku',  moduleId: './routes/sudoku/sudoku', nav: true, title: 'Sudoku' });
   });
 
-  it('should have a users route', () => {
-    expect(sut.router.routes).toContain({ route: 'users', name: 'users', moduleId: './users', nav: true, title: 'Github Users' });
+  it('should have a eightQueens route', () => {
+    expect(sut.router.routes).toContain({ route: 'eightQueens', name: 'eightQueens', moduleId: './routes/eight-queens/eight-queens', nav: true, title: 'Eight Queens' });
   });
 
-  it('should have a child router route', () => {
-    expect(sut.router.routes).toContain({ route: 'child-router', name: 'child-router', moduleId: './child-router', nav: true, title: 'Child Router' });
+  it('should have a connectFour route', () => {
+    expect(sut.router.routes).toContain({ route: 'connectFour', name: 'connectFour', moduleId: './routes/connect-four/connect-four', nav: true, title: 'Connect Four' });
   });
 });

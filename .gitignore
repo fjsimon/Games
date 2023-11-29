@@ -43,6 +43,7 @@ jspm_packages
 #npm-debug.log*
 .DS_STORE
 /dist
+/target
 /build
 /typings
 /.awcache
@@ -53,3 +54,4 @@ yarn.lock
 package-lock.json
 .idea
 *.iml
+.project

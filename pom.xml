@@ -132,17 +132,17 @@
                   <!--<arguments>run aurelia-lint</arguments>-->
                 <!--</configuration>-->
               <!--</execution>-->
-              <!--<execution>-->
-                <!--<id>run test</id>-->
-                <!--<goals>-->
-                  <!--<goal>npm</goal>-->
-                <!--</goals>-->
-                <!--<phase>generate-resources</phase>-->
-                <!--<configuration>-->
-                  <!--<skip>${skip.jasmine}</skip>-->
-                  <!--<arguments>run aurelia-test</arguments>-->
-                <!--</configuration>-->
-              <!--</execution>-->
+              <execution>
+                <id>run test</id>
+                <goals>
+                  <goal>npm</goal>
+                </goals>
+                <phase>generate-resources</phase>
+                <configuration>
+                  <skip>${skip.jasmine}</skip>
+                  <arguments>run test</arguments>
+                </configuration>
+              </execution>
               <!--<execution>-->
                 <!--<id>run aurelia coverage</id>-->
                 <!--<goals>-->
