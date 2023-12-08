@@ -29,7 +29,7 @@ describe('EightQueens Router module', () => {
   });
 
   it('configures the heading', () => {
-    expect(testee.heading).toEqual('Sudoku Solver');
+    expect(testee.heading).toEqual('Eight Queens');
   });
 
 });
