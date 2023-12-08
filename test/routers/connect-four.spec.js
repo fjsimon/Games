@@ -1,4 +1,4 @@
-import {Sudoku} from '../../src/routes/sudoku/sudoku';
+import {ConnectFour} from '../../src/routes/connect-four/connect-four';
 import {Container} from 'aurelia-dependency-injection';
 import {BindingEngine} from 'aurelia-binding';
 
@@ -12,7 +12,7 @@ import {BindingEngine} from 'aurelia-binding';
 //   }
 // }
 
-describe('the Child Router module', () => {
+describe('ConnectFour Router module', () => {
 
   var testee;
   var container, bindingEngine;
@@ -20,7 +20,7 @@ describe('the Child Router module', () => {
   beforeEach(() => {
     container = new Container();
     bindingEngine  = container.get(BindingEngine);
-    testee = new Sudoku({store: ""}, bindingEngine, {});
+    testee = new ConnectFour({store: ""}, bindingEngine, {});
 
   });
 
@@ -29,7 +29,7 @@ describe('the Child Router module', () => {
   });
 
   it('configures the heading', () => {
-    expect(testee.heading).toEqual('Sudoku Solver');
+    expect(testee.heading).toEqual('Connect Four');
   });
 
 });
